@@ -27,14 +27,6 @@ import {
       textInputs:[],
     }
 
-    validationTextInput()
-    {
-      const [textInputName, setTextInputName] = useState('');
-      if(!textInputName.trim()){
-        alert('Please Enter Name');
-        return;
-      }
-    }
     
     render(){
       
