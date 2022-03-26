@@ -3,6 +3,8 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { NavigationContainer } from '@react-navigation/native';
 import Routes from './navigation/routes'
 import {
+  AppRegistry,
+  Button,
   SafeAreaView,
   ScrollView,
   StatusBar,
@@ -20,11 +22,12 @@ enableScreens();
 export default class App extends React.Component {
   render() {
     return (
-        <Routes/>
+        
+        <div><h1>MERHABA</h1></div>
+        
     );
   }
 }
-
 
 
 const Stack = createNativeStackNavigator();
