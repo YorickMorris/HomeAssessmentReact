@@ -36,16 +36,7 @@ const Routes = () => {
             <Stack.Screen
                 name="SecondScreen"
                 component={SecondPage}
-                options={{
-                    title:'HEADER',
-                    headerTitleAlign:'center',
-                    headerStyle:{
-                        backgroundColor:'#f00',
-                    },
-                    headerTintColor:'#fff',
-                    headerTitleStyle:'bold',
-                    headerShown:true,
-                }}
+                
             />    
             </Stack.Navigator>
         </NavigationContainer>

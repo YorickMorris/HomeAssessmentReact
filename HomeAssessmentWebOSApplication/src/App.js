@@ -23,7 +23,7 @@ export default class App extends React.Component {
   render() {
     return (
         
-        <div><h1>MERHABA</h1></div>
+        <Routes/>
         
     );
   }

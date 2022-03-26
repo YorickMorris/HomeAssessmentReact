@@ -1,5 +1,6 @@
 import React from 'react';
 import {styles} from '../styles'
+import { Platform } from 'react-native';
 import { 
   SafeAreaProvider,
   SafeAreaView } from 'react-native-safe-area-context';
@@ -78,94 +79,184 @@ import { TextInput } from 'react-native-gesture-handler';
       }
     
       render(){
-
-        return(
-        <SafeAreaView style={{flex:1}}>
-            <View style={{flex:1}}>
-                <ScrollView >
-                    <View style={styles.textViewStyle } >
-                        <Text style={{color:'#9C27B0'},styles.purple}>ONE</Text>
-                        
-                    </View>
-                    <View style={styles.textInputViewComponentStyle}>
-                        <TextInput placeholder='Name'
-                            textAlign='center'
-                            value={this.state.name}
-                            onBlur={()=>this.nameSurnameValidator()}
-                            onChangeText={(text)=>{this.setState({name:text})}}
-                            style={{height:40},styles.purple}
-                            placeholderTextColor="#9C27B0">
+        if(Platform.OS==='web'){
+            return(
+                <SafeAreaView style={{flex:1}}>
+                    <View style={{flex:1}}>
+                        <ScrollView >
+                            <View style={styles.textViewStyle } >
+                                <Text style={{color:'#9C27B0'},styles.purple}>ONE</Text>
+                                <Text>Burasu Web</Text>
+                            </View>
+                            <View style={styles.textInputViewComponentStyle}>
+                                <TextInput placeholder='Name'
+                                    textAlign='center'
+                                    value={this.state.name}
+                                    onBlur={()=>this.nameSurnameValidator()}
+                                    onChangeText={(text)=>{this.setState({name:text})}}
+                                    style={{height:40},styles.purple}
+                                    placeholderTextColor="#9C27B0">
+                                        
+                                </TextInput>
                                 
-                        </TextInput>
-                        
-                    </View> 
-                    <Text style={{color:'red',textAlign:'center'}}>{this.state.nameError}</Text>
-                    <View style={styles.textInputViewComponentStyle}>
-                        
-                        <TextInput placeholder='Surname'
-                        textAlign='center'
-                        value={this.state.surname}
-                        onBlur={()=>this.nameSurnameValidator()}
-                        onChangeText={(text)=>{this.setState({surname:text})}}
-                            style={{height:40},styles.purple}
-                            placeholderTextColor="#9C27B0">
+                            </View> 
+                            <Text style={{color:'red',textAlign:'center'}}>{this.state.nameError}</Text>
+                            <View style={styles.textInputViewComponentStyle}>
                                 
-                        </TextInput>
-                    </View>
-
-                    <Text style={{color:'red',textAlign:'center'}}>{this.state.surnameError}</Text>
-                    <View style={styles.textInputViewComponentStyle}>
-                        
-                        <TextInput placeholder='Email'
-                        textAlign='center'
-                        value={this.state.email}
-                        onBlur={()=>this.nameSurnameValidator()}
-                        onChangeText={(text)=>{this.setState({email:text})}}
-                            style={{height:40},styles.purple}
-                            placeholderTextColor="#9C27B0">
+                                <TextInput placeholder='Surname'
+                                textAlign='center'
+                                value={this.state.surname}
+                                onBlur={()=>this.nameSurnameValidator()}
+                                onChangeText={(text)=>{this.setState({surname:text})}}
+                                    style={{height:40},styles.purple}
+                                    placeholderTextColor="#9C27B0">
+                                        
+                                </TextInput>
+                            </View>
+        
+                            <Text style={{color:'red',textAlign:'center'}}>{this.state.surnameError}</Text>
+                            <View style={styles.textInputViewComponentStyle}>
                                 
-                        </TextInput>
-                    </View>
-                    <Text style={{color:'red',textAlign:'center'}}>{this.state.emailError}</Text>
-                    <View style={styles.textInputViewComponentStyle}>
-                        
-                        <TextInput placeholder='Your Message'
-                        textAlign='center'
-                        value={this.state.message}
-                        onBlur={()=>this.nameSurnameValidator()}
-                        onChangeText={(text)=>{this.setState({message:text})}}
-                            style={{height:40},styles.purple}
-                            placeholderTextColor="#9C27B0">
+                                <TextInput placeholder='Email'
+                                textAlign='center'
+                                value={this.state.email}
+                                onBlur={()=>this.nameSurnameValidator()}
+                                onChangeText={(text)=>{this.setState({email:text})}}
+                                    style={{height:40},styles.purple}
+                                    placeholderTextColor="#9C27B0">
+                                        
+                                </TextInput>
+                            </View>
+                            <Text style={{color:'red',textAlign:'center'}}>{this.state.emailError}</Text>
+                            <View style={styles.textInputViewComponentStyle}>
                                 
-                        </TextInput>
-                    </View>
-                    <Text style={{color:'red',textAlign:'center'}}>{this.state.messageError}</Text>
-                    <View style={{flexDirection:"row"}}>
-                        <View style={styles.buttonReset}>
+                                <TextInput placeholder='Your Message'
+                                textAlign='center'
+                                value={this.state.message}
+                                onBlur={()=>this.nameSurnameValidator()}
+                                onChangeText={(text)=>{this.setState({message:text})}}
+                                    style={{height:40},styles.purple}
+                                    placeholderTextColor="#9C27B0">
+                                        
+                                </TextInput>
+                            </View>
+                            <Text style={{color:'red',textAlign:'center'}}>{this.state.messageError}</Text>
+                            <View style={{flexDirection:"row"}}>
+                                <View style={styles.buttonReset}>
+                                    
+                                    <Button title='RESET' disabled={(this.state.email==''&&this.state.name==''&&
+                                    this.state.surname==''&&this.state.message=='')}
+                                    onPress={()=> this.setState({name:''})}></Button>
+                                </View>
+                                <View style={styles.buttonSubmit} >
+                                    <Button title='SUBMIT' disabled={this.state.isAllFieldsValidated==true? false:true} onPress={() =>
+                                            this.props.navigation.navigate('SecondScreen')
+                                        }></Button>
+                                </View>
+                            </View>
                             
-                            <Button title='RESET' disabled={(this.state.email==''&&this.state.name==''&&
-                            this.state.surname==''&&this.state.message=='')}
-                            onPress={()=> this.setState({name:''})}></Button>
-                        </View>
-                        <View style={styles.buttonSubmit} >
-                            <Button title='SUBMIT' disabled={this.state.isAllFieldsValidated==true? false:true} onPress={() =>
-                                    this.props.navigation.navigate('SecondScreen')
-                                }></Button>
-                        </View>
+                          
+                        </ScrollView>
+                        <View>
+                  <Text
+                    style={styles.purple,{textAlign:'center',backgroundColor:'#808000',color:'#9C27B0',fontSize:20,paddingVertical:15}}
+                    placeholderTextColor="#9C27B0">Footer       
+                  </Text>
+                </View>
+                           
                     </View>
-                    
-                  
-                </ScrollView>
-                <View>
-          <Text
-            style={styles.purple,{textAlign:'center',backgroundColor:'#808000',color:'#9C27B0',fontSize:20,paddingVertical:15}}
-            placeholderTextColor="#9C27B0">Footer       
-          </Text>
-        </View>
-                   
-            </View>
-        </SafeAreaView>
-        );
+                </SafeAreaView>
+                );
+        }else{
+            return(
+                <SafeAreaView style={{flex:1}}>
+                    <View style={{flex:1}}>
+                        <ScrollView >
+                            <View style={styles.textViewStyle } >
+                                <Text style={{color:'#9C27B0'},styles.purple}>ONE</Text>
+                                <Text>Burası MOBİL</Text>
+                            </View>
+                            <View style={styles.textInputViewComponentStyle}>
+                                <TextInput placeholder='Name'
+                                    textAlign='center'
+                                    value={this.state.name}
+                                    onBlur={()=>this.nameSurnameValidator()}
+                                    onChangeText={(text)=>{this.setState({name:text})}}
+                                    style={{height:40},styles.purple}
+                                    placeholderTextColor="#9C27B0">
+                                        
+                                </TextInput>
+                                
+                            </View> 
+                            <Text style={{color:'red',textAlign:'center'}}>{this.state.nameError}</Text>
+                            <View style={styles.textInputViewComponentStyle}>
+                                
+                                <TextInput placeholder='Surname'
+                                textAlign='center'
+                                value={this.state.surname}
+                                onBlur={()=>this.nameSurnameValidator()}
+                                onChangeText={(text)=>{this.setState({surname:text})}}
+                                    style={{height:40},styles.purple}
+                                    placeholderTextColor="#9C27B0">
+                                        
+                                </TextInput>
+                            </View>
+        
+                            <Text style={{color:'red',textAlign:'center'}}>{this.state.surnameError}</Text>
+                            <View style={styles.textInputViewComponentStyle}>
+                                
+                                <TextInput placeholder='Email'
+                                textAlign='center'
+                                value={this.state.email}
+                                onBlur={()=>this.nameSurnameValidator()}
+                                onChangeText={(text)=>{this.setState({email:text})}}
+                                    style={{height:40},styles.purple}
+                                    placeholderTextColor="#9C27B0">
+                                        
+                                </TextInput>
+                            </View>
+                            <Text style={{color:'red',textAlign:'center'}}>{this.state.emailError}</Text>
+                            <View style={styles.textInputViewComponentStyle}>
+                                
+                                <TextInput placeholder='Your Message'
+                                textAlign='center'
+                                value={this.state.message}
+                                onBlur={()=>this.nameSurnameValidator()}
+                                onChangeText={(text)=>{this.setState({message:text})}}
+                                    style={{height:40},styles.purple}
+                                    placeholderTextColor="#9C27B0">
+                                        
+                                </TextInput>
+                            </View>
+                            <Text style={{color:'red',textAlign:'center'}}>{this.state.messageError}</Text>
+                            <View style={{flexDirection:"row"}}>
+                                <View style={styles.buttonReset}>
+                                    
+                                    <Button title='RESET' disabled={(this.state.email==''&&this.state.name==''&&
+                                    this.state.surname==''&&this.state.message=='')}
+                                    onPress={()=> this.setState({name:''})}></Button>
+                                </View>
+                                <View style={styles.buttonSubmit} >
+                                    <Button title='SUBMIT' disabled={this.state.isAllFieldsValidated==true? false:true} onPress={() =>
+                                            this.props.navigation.navigate('SecondScreen')
+                                        }></Button>
+                                </View>
+                            </View>
+                            
+                          
+                        </ScrollView>
+                        <View>
+                  <Text
+                    style={styles.purple,{textAlign:'center',backgroundColor:'#808000',color:'#9C27B0',fontSize:20,paddingVertical:15}}
+                    placeholderTextColor="#9C27B0">Footer       
+                  </Text>
+                </View>
+                           
+                    </View>
+                </SafeAreaView>
+                );
+        }
+        
           
       }
   }
