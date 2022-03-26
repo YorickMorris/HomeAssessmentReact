@@ -53,6 +53,16 @@ export const styles=StyleSheet.create({
         textAlign:'center',
         borderColor:'#000000',
         borderWidth:3
+      },
+      sideBar:{
+        flex:1,
+        alignSelf:'stretch',
+        position:'absolute',
+        right:0,
+        backgroundColor:'#00BFFF',
+        alignItems:'center',
+        textAlign:'center',
+        justifyContent:'center'
       }
 
 

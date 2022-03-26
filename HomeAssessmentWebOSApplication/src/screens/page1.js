@@ -33,7 +33,8 @@ import { TextInput } from 'react-native-gesture-handler';
             emailError:'',
             message:'',
             messageError:'',
-            isAllFieldsValidated:false
+            isAllFieldsValidated:false,
+            colorOfComponents:'#000000'
         }
       }
       
@@ -81,8 +82,22 @@ import { TextInput } from 'react-native-gesture-handler';
       render(){
         if(Platform.OS==='web'){
             return(
-                <SafeAreaView style={{flex:1}}>
-                    <View style={{flex:1}}>
+                <SafeAreaView style={{flex:1,flexDirection:'row',alignSelf:'scretch'}}>
+                    <View style={{flex:1,alignSelf:'stretch'}}>
+                        <Button title="Menu Item" color="#72B877" onPress={()=> this.setState({ colorOfComponents:"#72B877" })}></Button>
+                        <Button title="Menu Item" color="#B453A1" onPress={()=> this.setState({ colorOfComponents:"#B453A1" })}></Button>
+                        <Button title="Menu Item" color="#6D11B0" onPress={()=> this.setState({ colorOfComponents:"#6D11B0" })}></Button>
+                        <Button title="Menu Item" color="#4B78E7" onPress={()=> this.setState({ colorOfComponents:"#4B78E7" })}></Button>
+                        <Button title="Menu Item" color="#E30B16" onPress={()=> this.setState({ colorOfComponents:"#E30B16" })}></Button>
+                        <Button title="Menu Item" color="#8C7474" onPress={()=> this.setState({ colorOfComponents:"#8C7474" })}></Button>
+                        <Button title="Menu Item" color="#646874" onPress={()=> this.setState({ colorOfComponents:"#646874" })}></Button>
+                        <Button title="Menu Item" color="#3ECDE4" onPress={()=> this.setState({ colorOfComponents:"#3ECDE4" })}></Button>
+                        <Button title="Menu Item" color="#B01B58" onPress={()=> this.setState({ colorOfComponents:"#B01B58" })}></Button>
+                        <Button title="Menu Item" color="#9BF381" onPress={()=> this.setState({ colorOfComponents:"#9BF381" })}></Button>
+                        <Button title="Menu Item" color="#540FE5" onPress={()=> this.setState({ colorOfComponents:"#540FE5" })}></Button>
+                    </View>
+                    <View style={{flex:5,alignSelf:'stretch'}}>
+                        <View style={{flex:1,alignSelf:'stretch'}}> </View>
                         <ScrollView >
                             <View style={styles.textViewStyle } >
                                 <Text style={{color:'#9C27B0'},styles.purple}>ONE</Text>
@@ -144,12 +159,12 @@ import { TextInput } from 'react-native-gesture-handler';
                             <View style={{flexDirection:"row"}}>
                                 <View style={styles.buttonReset}>
                                     
-                                    <Button title='RESET' disabled={(this.state.email==''&&this.state.name==''&&
+                                    <Button title='RESET' color={this.state.colorOfComponents} disabled={(this.state.email==''&&this.state.name==''&&
                                     this.state.surname==''&&this.state.message=='')}
-                                    onPress={()=> this.setState({name:''})}></Button>
+                                    onPress={()=> this.setState({name:'',surname:'',email:'',message:''})}></Button>
                                 </View>
                                 <View style={styles.buttonSubmit} >
-                                    <Button title='SUBMIT' disabled={this.state.isAllFieldsValidated==true? false:true} onPress={() =>
+                                    <Button title='SUBMIT' color={this.state.colorOfComponents} disabled={this.state.isAllFieldsValidated==true? false:true} onPress={() =>
                                             this.props.navigation.navigate('SecondScreen')
                                         }></Button>
                                 </View>
@@ -157,14 +172,15 @@ import { TextInput } from 'react-native-gesture-handler';
                             
                           
                         </ScrollView>
-                        <View>
+                <View style={{flex:1}}>
                   <Text
-                    style={styles.purple,{textAlign:'center',backgroundColor:'#808000',color:'#9C27B0',fontSize:20,paddingVertical:15}}
+                    style={styles.purple,{textAlign:'center',backgroundColor:this.state.colorOfComponents,color:'#9C27B0',fontSize:20,paddingVertical:15}}
                     placeholderTextColor="#9C27B0">Footer       
                   </Text>
                 </View>
                            
                     </View>
+                    <View style={styles.sideBar,{backgroundColor:'#00BFFF'}}><Text style={{alignItems:'center'}} textAlign='center'>Sidebar</Text></View>
                 </SafeAreaView>
                 );
         }else{
@@ -234,7 +250,7 @@ import { TextInput } from 'react-native-gesture-handler';
                                     
                                     <Button title='RESET' disabled={(this.state.email==''&&this.state.name==''&&
                                     this.state.surname==''&&this.state.message=='')}
-                                    onPress={()=> this.setState({name:''})}></Button>
+                                    onPress={()=> this.setState({name:'',surname:'',email:'',message:''})}></Button>
                                 </View>
                                 <View style={styles.buttonSubmit} >
                                     <Button title='SUBMIT' disabled={this.state.isAllFieldsValidated==true? false:true} onPress={() =>
@@ -248,7 +264,7 @@ import { TextInput } from 'react-native-gesture-handler';
                         <View>
                   <Text
                     style={styles.purple,{textAlign:'center',backgroundColor:'#808000',color:'#9C27B0',fontSize:20,paddingVertical:15}}
-                    placeholderTextColor="#9C27B0">Footer       
+                    >Footer       
                   </Text>
                 </View>
                            

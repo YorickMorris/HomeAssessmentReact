@@ -23,9 +23,9 @@ import {
   class PageTwo extends React.Component{
     constructor(props){
       super(props);
-    }
-    state={
-      textInputs:[],
+      this.state={
+        colorOfComponents:'#000000'
+      }
     }
 
     
@@ -57,10 +57,11 @@ import {
         if(Platform.OS==='web'){
           return(
         
-            <View style={{ flex: 1, marginTop: 20 }}>
-             
+          <View style={{ flex: 1, marginTop: 20 }}>
+          
+         
            <FlatList
-             style={{ flex: 1, marginBottom:20 }}
+             style={{ flex: 5, marginBottom:20 }}
              data={[1, 2, 3, 4]}
              ListHeaderComponent={FlatList_Header}
              ListFooterComponent={FlatList_Footer}
